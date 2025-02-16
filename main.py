@@ -49,8 +49,22 @@ def to_value(v):
         return v.longest_size
     else:
         return int(v)
-        
+
+def combine(left,right):
+    is_entire_range = left.is_entire_range and right.is_entire_range
+    
+    
 def longest_run_recursive(mylist, key):
+    if len(mylist) == 1:
+        if mylist[0] == key:
+            return Result(1,1,1,True)
+        else:
+            return Result(0,0,0,False)
+    else:
+        left = longest_run_recursive(mylist[:len(mylist)//2], key) 
+        right = longest_run_recursive(mylist[len(mylist)//2:], key)
+        
+        
     
         
     pass
