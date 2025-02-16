@@ -5,12 +5,26 @@ See assignment-01.pdf for details.
 # no imports needed.
 
 def foo(x):
-    ### TODO
-    pass
+    if x <= 1:
+        return x
+    else:
+        return foo(x-1) + foo(x-2)
+# returns the element in the fibbonacci sequence at index x. So foo(3) would return the fourth element in the sequence at index 3.
 
 def longest_run(mylist, key):
-    ### TODO
-    pass
+    count = 0
+    longest = 0
+    for num in mylist:
+        if num == key:
+            count += 1
+        else:
+            if count > longest:
+                longest = count
+            count = 0
+    return max(count,longest)
+
+# Both the work and span of this implementation are O(n), as the amount of comparisons is proportional to the input size so the work is O(n)
+# No parallelism is possible because each comparison is dependent on the previous values, making the algorithm sequential. So the span is O(n)
 
 
 class Result:
@@ -37,7 +51,8 @@ def to_value(v):
         return int(v)
         
 def longest_run_recursive(mylist, key):
-    ### TODO
+    
+        
     pass
 
 
