@@ -66,7 +66,6 @@ def longest_run_recursive(mylist, key):
         combine_results(left,right)
 
 def combine_results(result1, result2):
-    res = None
     if result1.is_entire_range and result2.is_entire_range:
         total = result1.longest_size + result2.longest_size
         return Result(total, total, total, True)
