@@ -63,11 +63,40 @@ def longest_run_recursive(mylist, key):
     else:
         left = longest_run_recursive(mylist[:len(mylist)//2], key) 
         right = longest_run_recursive(mylist[len(mylist)//2:], key)
-        
-        
-    
-        
-    pass
+        combine_results(left,right)
+
+def combine_results(result1, result2):
+    res = None
+    if result1.is_entire_range and result2.is_entire_range:
+        total = result1.longest_size + result2.longest_size
+        return Result(total, total, total, True)
+    else:
+        left_size = result1.left_size
+        if result1.is_entire_range:  
+            left_size += result2.left_size
+
+        right_size = result2.right_size
+        if result2.is_entire_range: 
+            right_size += result1.right_size
+
+        overlap = result1.right_size + result2.left_size
+
+        return Result(
+            left_size,
+            right_size,
+            max(overlap, result1.longest_size, result2.longest_size),
+            False
+        )
+# 3d) 
+#    W(n) = 2W(n/2) + 1    
+#    S(n) = O(log(n))
+
+# 3e)
+#    Work would stay the same
+#    New S(n/2) + 1
+
+
+
 
 
 
